@@ -31,6 +31,10 @@ export const regUser = async (req: Request, res: Response) => {
 			throw new Error('Unable to create user');
 		}
 		await newUser.save();
+
+		return res.status(StatusCodes.CREATED).json({
+			msg: 'User created successfully'
+		})
 	} catch (err: any) {
 		const statusMap: Record<string, number> = {
 			'User already exist': StatusCodes.CONFLICT,

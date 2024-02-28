@@ -29,6 +29,8 @@ export const addTask = async (req: Request, res: Response) => {
         if (! newTask) {
             throw new Error ("Unable to create User")
         }
+
+        return res.status(StatusCodes.CREATED).json({msg: 'Task Created', newTask})
     } catch (err: any) {
 
         logger.error(err.message)
