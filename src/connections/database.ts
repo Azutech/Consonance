@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
-import {config} from 'dotenv';
+import { config } from 'dotenv';
 import { logger } from '../middlewares/logger';
-
 config();
 
 mongoose.set('debug', false);

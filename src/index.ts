@@ -1,12 +1,11 @@
 import http from 'http';
-import {config} from 'dotenv';
+import { config } from 'dotenv';
 import { logger } from './middlewares/logger';
 
 import database from './connections/database';
 import { server } from './server';
 
-
-config()
+config();
 
 import { PORT } from './utils/config';
 
