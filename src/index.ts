@@ -2,7 +2,7 @@ import http from 'http';
 import {config} from 'dotenv';
 import { logger } from './middlewares/logger';
 
-// import database from './connections/database';
+import database from './connections/database';
 import { server } from './server';
 
 
@@ -14,7 +14,7 @@ const httpServer = http.createServer(server);
 
 const app = async () => {
 	try {
-		// database().catch((err) => console.error(err));
+		database().catch((err) => console.error(err));
 		httpServer.listen(PORT, () => {
 			logger.info(
 				`Transport-Dek is listening at http://localhost:${PORT} 🚀🚀`,
