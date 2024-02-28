@@ -33,12 +33,11 @@ export const regUser = async (req: Request, res: Response) => {
 		await newUser.save();
 
 		return res.status(StatusCodes.CREATED).json({
-			msg: 'User created successfully'
-		})
+			msg: 'User created successfully',
+		});
 	} catch (err: any) {
 		const statusMap: Record<string, number> = {
 			'User already exist': StatusCodes.CONFLICT,
-			'password does not match': StatusCodes.BAD_REQUEST,
 			'Unable to create user': StatusCodes.BAD_REQUEST,
 			'Password must be at least 8 characters long, with at least 1 uppercase letter, 1 lowercase letter, and 1 symbol':
 				StatusCodes.BAD_REQUEST,
