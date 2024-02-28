@@ -1,12 +1,14 @@
 import express, { Application, Request, Response } from 'express';
 import { config } from 'dotenv';
 import { StatusCodes } from 'http-status-codes';
+import { routes } from './routes';
 
 config();
 
 export const server: Application = express();
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+server.use('/api/v1', routes);
 
 server.get('/', (req: Request, res: Response) => {
 	res.status(StatusCodes.OK).json('Welcome To Consonance Server 🚀🚀');
