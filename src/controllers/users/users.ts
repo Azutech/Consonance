@@ -5,7 +5,7 @@ import { User } from '../../models/user';
 export const AllUser = async (req: Request, res: Response) => {
 	try {
 		const user = await User.find();
-		if (!user) {
+		if (!user || user.length === 0) {
 			throw new Error('Unable to retrieve data');
 		}
 		return res
