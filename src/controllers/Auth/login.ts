@@ -3,6 +3,9 @@ import { StatusCodes } from 'http-status-codes';
 import { User } from '../../models/user';
 import { comparePasswords } from '../../utils/hashpassword';
 import { logger } from '../../middlewares/logger';
+import { createJWT } from '../../utils/jwt';
+
+
 
 export const login = async (req: Request, res: Response) => {
 	try {
@@ -18,9 +21,15 @@ export const login = async (req: Request, res: Response) => {
 			return res.status(401).json({ message: 'Wrong password' });
 		}
 
+		const accessToken = createJWT({ user });
+		res.cookie('accessToken', accessToken, {
+			httpOnly: true,
+			secure: true,
+		});
+
 		return res.status(StatusCodes.OK).json({
-			id: user._id,
 			email: user.email,
+			token: accessToken
 		});
 	} catch (err: any) {
 		logger.error(err.message);
