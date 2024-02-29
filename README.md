@@ -45,6 +45,8 @@ This repository contains a Node.js application that manages users and tasks, uti
     - `PUT /tasks/:id`: Update a task by ID
     - `DELETE /tasks/:id`: Delete a task by ID
 
+     Click this [link](https://documenter.getpostman.com/view/19569197/2sA2rGuKFM) to get the full API Documentation 
+
 ## Running Tests
 
 1. Access the running application container:
