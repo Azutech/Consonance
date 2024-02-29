@@ -1,3 +1,7 @@
+import { Request } from 'express';
+
+
+
 export interface UserTypes {
 	name: string;
 	email: string;
@@ -9,4 +13,9 @@ export interface TaskTypes {
 	description: string;
 	status: string;
 	userId: string;
+}
+
+
+export interface CustomRequest extends Request {
+	user?: any;
 }
