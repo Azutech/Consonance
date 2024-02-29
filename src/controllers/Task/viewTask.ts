@@ -6,14 +6,14 @@ import { logger } from '../../middlewares/logger';
 export const viewTask = async (req: Request, res: Response) => {
 	try {
 		const { id } = req.query;
-		const task = await Task.findOne({ id });
+		const task = await Task.findOne({ _id : id});
 		if (!task) {
 			throw new Error('Unable to retrieve data');
 		}
 		return res
 			.status(StatusCodes.OK)
 
-			.json({ msg: 'All services data retrieved', task });
+			.json({ msg: 'Task data retrieved', task });
 	} catch (err: any) {
 		logger.error(err.message);
 		const statusMap: Record<string, number> = {

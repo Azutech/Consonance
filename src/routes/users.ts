@@ -5,4 +5,4 @@ import { userDashboard, AllUser } from '../controllers/users/users';
 export const user : Router =  Router()
 
 user.get('/alluser', AllUser)
-user.get('/alluser', userDashboard)
+user.get('/user', userDashboard)

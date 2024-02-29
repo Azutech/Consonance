@@ -5,7 +5,7 @@ import { logger } from '../../middlewares/logger';
 
 export const updateTask = async (req: Request, res: Response) => {
 	try {
-		const { id } = req.params; // Assuming the task ID is passed as a parameter in the URL
+		const { id } = req.query; // Assuming the task ID is passed as a parameter in the URL
 		const { title, description, status } = req.body;
 
 		const updatedTask = await Task.findByIdAndUpdate(
