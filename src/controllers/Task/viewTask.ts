@@ -36,5 +36,14 @@ export const AllTask = async (req: Request, res: Response) => {
 			.status(StatusCodes.OK)
 
 			.json({ msg: 'All Task data retrieved', task });
-	} catch (err: any) {}
+	} catch (err: any) {
+		logger.error(err.message);
+		const statusMap: Record<string, number> = {
+			'Unable to retrieve data': StatusCodes.NOT_FOUND,
+		};
+
+		const statusCode =
+			statusMap[err.message] || StatusCodes.INTERNAL_SERVER_ERROR;
+		return res.status(statusCode).json({ error: err.message });
+	}
 };
