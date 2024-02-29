@@ -29,7 +29,7 @@ This repository contains a Node.js application that manages users and tasks, uti
     docker-compose up --build
     ```
 
-4. Access the application at http://localhost:8080.
+4. Access the application at http://localhost:8081.
 
 ## API Endpoints
 
