@@ -12,8 +12,6 @@ export const createJWT = (payload: object) => {
 	return token;
 };
 
-
-
 export const verifyJWT = (token: string): any => {
 	try {
 		// Verify the JWT token using your secret key

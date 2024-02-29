@@ -6,7 +6,7 @@ import { logger } from '../../middlewares/logger';
 export const viewTask = async (req: Request, res: Response) => {
 	try {
 		const { id } = req.query;
-		const task = await Task.findOne({ _id : id});
+		const task = await Task.findOne({ _id: id });
 		if (!task) {
 			throw new Error('Unable to retrieve data');
 		}

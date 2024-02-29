@@ -1,7 +1,5 @@
 import { Request } from 'express';
 
-
-
 export interface UserTypes {
 	name: string;
 	email: string;
@@ -14,7 +12,6 @@ export interface TaskTypes {
 	status: string;
 	userId: string;
 }
-
 
 export interface CustomRequest extends Request {
 	user?: any;

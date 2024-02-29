@@ -1,44 +1,37 @@
-# Use a base image with Node.js pre-installed
-FROM node:14 AS builder
+FROM node:18-alpine as development
 
-# Set the working directory inside the container
-WORKDIR /app
+COPY package*.json .
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+WORKDIR /usr/src/app
 
-# Install dependencies
 RUN npm install
 
-# Copy the rest of the application code
 COPY . .
 
-# Run tests
-RUN npm run test
-
-# Build the application
 RUN npm run build
 
-# Second stage - use a smaller image for production
-FROM node:14-slim
+RUN npm run test
 
-# Set the working directory inside the container
-WORKDIR /app
+COPY dist ./dist
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
 
-# Install only production dependencies
-RUN npm install --only=production
-
-# Copy the built application from the builder stage
-COPY --from=builder /app/build ./build
-
-# Expose port 3000
 EXPOSE 3000
 
-# Set environment variables if needed
-ENV NODE_ENV=production
 
-# Command to run the application
-CMD [ "node", "dist/index.js" ]
+
+FROM node:19-alpine as production
+
+
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
+
+WORKDIR /usr/src/app
+
+COPY package*.json .
+
+RUN npm ci --only=production
+
+COPY --from=development /usr/src/app ./dist/src
+
+CMD ["node", "dist/src/index.js"]

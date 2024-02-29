@@ -5,8 +5,6 @@ import { comparePasswords } from '../../utils/hashpassword';
 import { logger } from '../../middlewares/logger';
 import { createJWT } from '../../utils/jwt';
 
-
-
 export const login = async (req: Request, res: Response) => {
 	try {
 		const { email, password } = req.body;
@@ -29,7 +27,7 @@ export const login = async (req: Request, res: Response) => {
 
 		return res.status(StatusCodes.OK).json({
 			email: user.email,
-			token: accessToken
+			token: accessToken,
 		});
 	} catch (err: any) {
 		logger.error(err.message);

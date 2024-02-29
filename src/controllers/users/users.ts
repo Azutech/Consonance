@@ -3,7 +3,6 @@ import { StatusCodes } from 'http-status-codes';
 import { User } from '../../models/user';
 import { logger } from '../../middlewares/logger';
 
-
 export const AllUser = async (req: Request, res: Response) => {
 	try {
 		const user = await User.find();

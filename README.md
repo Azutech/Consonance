@@ -1,5 +1,12 @@
 # Consonance Task
-This is a short description of task management app that allows users manage their tasks.
+This project demonstrates how to containerize a web application using Docker and Docker Compose.
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed on your local machine:
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Installation
 
@@ -19,6 +26,14 @@ To install the project, follow these steps:
 - Jest: A testing framework for JavaScript.
 - TypeScript: A typed superset of JavaScript.
 
+## Docker Test
+
+- docker-compose build
+- docker-compose up
+- docker-compose down
+
+
+
 ## Contributing
 
 To contribute to the project, you can:
@@ -30,12 +45,7 @@ To contribute to the project, you can:
 - Create a pull request
 
 
+[MIT] ()
+The project is licensed under the MIT license.
 
-## API Documentation
- - GET /api/cinema/oneMovie/:Id: Gets the one movie.
- - GET /api/cinema/allmovies: Get all the movies.
- - POST /api/cinema/newMovies: Posts new movies.
- - POST /api/cinema/booking/:Id: Unbook tickets.
-
- Click this [link](https://documenter.getpostman.com/view/19569197/2s93sW8bD9) to get the full API Documentation 
-## License
+Copyright (c) [2023] [EmmanuelOnugha]

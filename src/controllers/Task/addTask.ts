@@ -26,7 +26,7 @@ export const addTask = async (req: Request, res: Response) => {
 			throw new Error('Unable to create User');
 		}
 
-		await newTask.save()
+		await newTask.save();
 
 		return res
 			.status(StatusCodes.CREATED)
