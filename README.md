@@ -1,50 +1,73 @@
-# Consonance Task
-This project demonstrates how to containerize a web application using Docker and Docker Compose.
+# Node.js Application with MongoDB Dockerization
+
+This repository contains a Node.js application that manages users and tasks, utilizing MongoDB for data storage. The application is containerized using Docker, and Docker Compose coordinates the containers for both the application.
 
 ## Prerequisites
 
-Before you begin, ensure you have the following installed on your local machine:
+- Docker
+- Docker Compose
 
-- [Docker](https://docs.docker.com/get-docker/)
-- [Docker Compose](https://docs.docker.com/compose/install/)
+## Getting Started
 
-## Installation
+1. Clone this repository:
 
-To install the project, follow these steps:
+    ```bash
+    git clone https://github.com/your-username/your-node-app.git
+    cd your-node-app
+    ```
 
--  Clone the repository: `git clone https://github.com/Azutech/Consonance`
--  Change to the project directory: `cd project`
--  Install the dependencies: `npm install`
--  Run the project: `npm start`
+2. Create a `.env` file in the root directory with the following environment variables:
 
-## Technologies
+    ```env
+    MONGODB_URI=mongodb://mongo:27017/your-database-name
+    PORT=8080
+    ```
 
-- Node.js: A JavaScript runtime environment.
-- Express.js: A web application framework for Node.js.
-- MongoDB: A NoSQL database for storing user and booking data.
-- Mongoose: An Object Data Modeling (ODM) library for MongoDB.
-- Jest: A testing framework for JavaScript.
-- TypeScript: A typed superset of JavaScript.
+3. Build and start the containers:
 
-## Docker Test
+    ```bash
+    docker-compose up --build
+    ```
 
-- docker-compose build
-- docker-compose up
-- docker-compose down
+4. Access the application at http://localhost:8080.
+
+## API Endpoints
+
+- **Users:**
+    - `GET /users`: Get all users
+    - `GET /users/:id`: Get a user by ID
+    - `POST /users`: Create a new user
+
+- **Tasks:**
+    - `GET /tasks`: Get all tasks
+    - `GET /tasks/:id`: Get a task by ID
+    - `POST /tasks`: Create a new task
+    - `PUT /tasks/:id`: Update a task by ID
+    - `DELETE /tasks/:id`: Delete a task by ID
+
+## Running Tests
+
+1. Access the running application container:
+
+    ```bash
+    docker-compose exec app sh
+    ```
+
+2. Inside the container, run the tests:
+
+    ```bash
+    npm test
+    ```
+
+## Stopping the Containers
+
+To stop the containers, use:
+
+```bash
+docker-compose down
 
 
-
-## Contributing
-
-To contribute to the project, you can:
-
-- Fork the repository
-- Create a new branch: `git checkout -b feature-name`
-- Make your changes and commit them: `git commit -m "Add feature-name"`
-- Push to your branch: `git push origin feature-name`
-- Create a pull request
-
-
+## License
 [MIT] ()
 The project is licensed under the MIT license.
 
