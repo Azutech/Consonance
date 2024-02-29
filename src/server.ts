@@ -11,7 +11,7 @@ server.use(express.urlencoded({ extended: true }));
 server.use('/api/v1', routes);
 
 server.get('/', (req: Request, res: Response) => {
-	res.status(StatusCodes.OK).json('Welcome To Consonance Server 🚀🚀');
+	res.status(StatusCodes.OK).json({message: 'Welcome To Consonance Server 🚀🚀'});
 });
 
 server.get('*', (req: Request, res: Response) => {
