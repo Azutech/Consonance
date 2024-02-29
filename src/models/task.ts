@@ -19,4 +19,4 @@ const taskSchema = new Schema<TaskTypes>({
 	},
 });
 
-export const Task = model('User', taskSchema);
+export const Task = model('Task', taskSchema);
