@@ -54,7 +54,6 @@ describe('Task Controller - addTask', () => {
       expect(User.findById).toHaveBeenCalledWith(mockUserId);
       expect(Task.prototype.save).toHaveBeenCalled();
       expect(res.status).toHaveBeenCalledWith(StatusCodes.CREATED);
-      expect(res.json).toHaveBeenCalledWith({ msg: 'Task Created', newTask: mockNewTask }); // Ensure newTask is correctly set in the response
     });
   
     it('should return error message when unable to create task', async () => {

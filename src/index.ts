@@ -16,7 +16,7 @@ const app = async () => {
 		database().catch((err) => console.error(err));
 		httpServer.listen(PORT, () => {
 			logger.info(
-				`Transport-Dek is listening at http://localhost:${PORT} 🚀🚀`,
+				`Consonance is listening at http://localhost:${PORT} 🚀🚀`,
 			);
 		});
 	} catch (err) {

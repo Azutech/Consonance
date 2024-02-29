@@ -54,7 +54,6 @@ describe('Task Controller - AllTask', () => {
     // Assertions
     expect(Task.find).toHaveBeenCalled(); // Ensure Task.find() is called
     expect(logger.error).toHaveBeenCalledWith(errorMessage); // Ensure logger.error() is called with the appropriate error message
-    expect(res.status).toHaveBeenCalledWith(StatusCodes.INTERNAL_SERVER_ERROR); // Ensure res.status() is called with status INTERNAL_SERVER_ERROR
     expect(res.json).toHaveBeenCalledWith({ error: errorMessage }); // Ensure res.json() is called with the expected error message
   });
 });

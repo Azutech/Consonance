@@ -1,31 +1,44 @@
-FROM node as builder
+# Use a base image with Node.js pre-installed
+FROM node:14 AS builder
 
-# Create app directory
-WORKDIR /usr/src/app
+# Set the working directory inside the container
+WORKDIR /app
 
-# Install app dependencies
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-RUN npm ci
+# Install dependencies
+RUN npm install
 
+# Copy the rest of the application code
 COPY . .
 
+# Run tests
+RUN npm run test
+
+# Build the application
 RUN npm run build
 
-FROM node:slim
+# Second stage - use a smaller image for production
+FROM node:14-slim
 
-ENV NODE_ENV production
-USER node
+# Set the working directory inside the container
+WORKDIR /app
 
-# Create app directory
-WORKDIR /usr/src/app
-
-# Install app dependencies
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-RUN npm ci --production
+# Install only production dependencies
+RUN npm install --only=production
 
-COPY --from=builder /usr/src/app/dist ./dist
+# Copy the built application from the builder stage
+COPY --from=builder /app/build ./build
 
-EXPOSE 8080
+# Expose port 3000
+EXPOSE 3000
+
+# Set environment variables if needed
+ENV NODE_ENV=production
+
+# Command to run the application
 CMD [ "node", "dist/index.js" ]
